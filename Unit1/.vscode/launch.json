@@ -1,0 +1,166 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "ReturnValue",
+            "request": "launch",
+            "mainClass": "ReturnValue",
+            "projectName": "Unit1_35b6d127"
+        },
+        {
+            "type": "java",
+            "name": "stackDiagram",
+            "request": "launch",
+            "mainClass": "stackDiagram",
+            "projectName": "Unit1_8b629524"
+        },
+        {
+            "type": "java",
+            "name": "Date",
+            "request": "launch",
+            "mainClass": "Date",
+            "projectName": "Unit1_8b629524"
+        },
+        {
+            "type": "java",
+            "name": "ModernToHistoricPounds",
+            "request": "launch",
+            "mainClass": "ModernToHistoricPounds",
+            "projectName": "Unit1_8b629524"
+        },
+        {
+            "type": "java",
+            "name": "CurrencyRunner",
+            "request": "launch",
+            "mainClass": "CurrencyRunner",
+            "projectName": "Unit1_8b629524"
+        },
+        {
+            "type": "java",
+            "name": "CurrencyRunner",
+            "request": "launch",
+            "mainClass": "CurrencyRunner",
+            "projectName": "Unit1_35b6d127",
+            "console": "externalTerminal"
+        },
+        {
+            "type": "java",
+            "name": "CurrencyRunner",
+            "request": "launch",
+            "mainClass": "CurrencyRunner",
+            "projectName": "Unit1_302609d5"
+        },
+        {
+            "type": "java",
+            "name": "TimeConverter",
+            "request": "launch",
+            "mainClass": "TimeConverter",
+            "projectName": "Unit1_8b629524"
+        },
+        {
+            "type": "java",
+            "name": "TempConverter",
+            "request": "launch",
+            "mainClass": "TempConverter",
+            "projectName": "Unit1_8b629524"
+        },
+        {
+            "type": "java",
+            "name": "Receipt",
+            "request": "launch",
+            "mainClass": "Receipt",
+            "projectName": "Unit1_35b6d127"
+        },
+        {
+            "type": "java",
+            "name": "Hello",
+            "request": "launch",
+            "mainClass": "Hello",
+            "projectName": "Unit1_35b6d127"
+        },
+        {
+            "type": "java",
+            "name": "Pong",
+            "request": "launch",
+            "mainClass": "Pong",
+            "projectName": "Unit1_302609d5"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "Unit1_302609d5"
+        },
+        {
+            "type": "java",
+            "name": "Date",
+            "request": "launch",
+            "mainClass": "Date",
+            "projectName": "Unit1_302609d5"
+        },
+        {
+            "type": "java",
+            "name": "Echo",
+            "request": "launch",
+            "mainClass": "Echo",
+            "projectName": "Unit1_302609d5",
+            "console": "externalTerminal"
+        },
+        {
+            "type": "java",
+            "name": "Receipt",
+            "request": "launch",
+            "mainClass": "Receipt",
+            "projectName": "Unit1_302609d5",
+            "console": "externalTerminal"
+        },
+        {
+            "type": "java",
+            "name": "FrameRunner",
+            "request": "launch",
+            "mainClass": "FrameRunner",
+            "projectName": "Unit1_302609d5"
+        },
+        {
+            "type": "java",
+            "name": "Hello",
+            "request": "launch",
+            "mainClass": "Hello",
+            "projectName": "Unit1_302609d5"
+        },
+        {
+            "type": "java",
+            "name": "Time",
+            "request": "launch",
+            "mainClass": "Time",
+            "projectName": "Unit1_302609d5"
+        },
+        {
+            "type": "java",
+            "name": "TempConverter",
+            "request": "launch",
+            "mainClass": "TempConverter",
+            "projectName": "Unit1_302609d5",
+            "console": "externalTerminal"
+        },
+        {
+            "type": "java",
+            "name": "Pong",
+            "request": "launch",
+            "mainClass": "Pong",
+            "projectName": "Unit1_302609d5",
+            "console": "externalTerminal"
+        }
+    ]
+}
