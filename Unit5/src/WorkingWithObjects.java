@@ -1,4 +1,5 @@
 import java.awt.Point;
+import java.awt.Rectangle;
 
 
 public class WorkingWithObjects {
@@ -30,7 +31,8 @@ public class WorkingWithObjects {
         p1.translate(1, 1);
 
         System.out.println(p1);
-
+        Rectangle rect = new Rectangle(0,0,0,0);
+        
 
 
     }
