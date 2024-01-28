@@ -1,5 +1,7 @@
 public class Rational {
 
+    //TODO add javadoc comments
+
     private int numerator;
     private int denominator;
 
