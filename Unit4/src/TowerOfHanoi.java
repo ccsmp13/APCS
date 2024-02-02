@@ -11,8 +11,8 @@ public class TowerOfHanoi extends JPanel {
 
     private static final long serialVersionUID = 1L;
     ArrayList<Stack<Integer>> towers;
-    final int NUM_DISKS = 10;
-    final int DELAY = 10;
+    final int NUM_DISKS = 9;
+    final int DELAY = 60;
 
     public TowerOfHanoi() {
         setPreferredSize(new Dimension(720, 400));
