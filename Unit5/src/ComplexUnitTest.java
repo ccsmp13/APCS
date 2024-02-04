@@ -23,5 +23,6 @@ public class ComplexUnitTest {
         System.out.println("Divide (real): \t\t" + c10.equals(new Complex(1.5, 2)));
         System.out.println("Square: \t\t" + c11.equals(new Complex(-7, 24)));
         System.out.println("Abs: \t\t\t" + (c11.abs() == 25.0));
+        System.out.println(new Complex(-1.5,2).square().abs());
     }
 }
