@@ -1,10 +1,9 @@
 import java.awt.Color;
-import java.nio.charset.MalformedInputException;
 
-public class Pallette {
+public class Palette {
     private int colorScheme;
 
-    public Pallette(int colorScheme) {
+    public Palette(int colorScheme) {
 
         this.colorScheme = colorScheme;
     }
@@ -25,9 +24,9 @@ public class Pallette {
         double normalized = (n / Mandelbrot.iterationLimit);
         if (normalized < 0)
             return Color.BLACK;
-        int red = (int)(122 * Math.cos(normalized * 3)) + 122;
+        int red = -(int)(122 * Math.cos(normalized * 3)) + 122;
         int green = (int) (122 * Math.cos(normalized * 6)) + 122;
-        int blue = -(int)(122 * Math.cos(normalized * 3)) + 122;
+        int blue = (int)(122 * Math.cos(normalized * 3)) + 122;
         return new Color(red, green, blue);
     }
  

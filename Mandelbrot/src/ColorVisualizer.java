@@ -43,9 +43,9 @@ public class ColorVisualizer extends JPanel {
         double normalized = (normedN);
         if (normedN < 0)
             return Color.BLACK;
-        int red = (int)(122 * Math.cos(normalized * 3)) + 122;
+        int red = -(int)(122 * Math.cos(normalized * 3)) + 122;
         int green = (int) (122 * Math.cos(normalized * 6)) + 122;
-        int blue = -(int)(122 * Math.cos(normalized * 3)) + 122;
+        int blue = (int)(122 * Math.cos(normalized * 3)) + 122;
         return new Color(red, green, blue);
     }
 }
