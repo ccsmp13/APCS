@@ -2,6 +2,7 @@ public class Mandelbrot {
     
     
     static int iterationLimit = 100;
+    static int 
     
     public static int testPoint(Complex c){
         Complex z = new Complex();
@@ -14,5 +15,8 @@ public class Mandelbrot {
             }
         }
         return k;
+    }
+    public static void updateRes(){
+        iterationLimit *= 1.4;
     }
 }

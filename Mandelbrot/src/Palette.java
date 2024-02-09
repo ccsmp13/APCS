@@ -21,7 +21,7 @@ public class Palette {
     //     return getPalette3(normedN);
     // }
     private Color getPalette1(double n){
-        double normalized = (n / Mandelbrot.iterationLimit);
+        double normalized = n;
         if (normalized < 0)
             return Color.BLACK;
         int red = -(int)(122 * Math.cos(normalized * 3)) + 122;

@@ -27,6 +27,6 @@ public class View {
         xSlope = (botRight.getReal()-topLeft.getReal()) / (screenWidth - 0);
         xOffset =  topLeft.getReal();
         yOffset = topLeft.getImag();
-        ySlope = (botRight.getImag() - topLeft.getImag()) / screenHeight - 0;
+        ySlope = -xSlope;
     }
 }
