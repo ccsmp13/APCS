@@ -1,23 +1,24 @@
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.*;
 
-public class FractalPanel extends JPanel implements MouseListener {
-    
-    //declare class wide variables
+public class FractalPanel extends JPanel implements MouseListener, KeyListener {
     int width = 600;
     int height = 400;
     View view = new View(width, height);
-    Palette p = new Palette(1);
+    Palette p = new Palette(0);
     Complex topLeft;
-    //declare any other fractal-related objects
+    Complex botRight;
+    double ratio = .1;
 
     public FractalPanel() {
         setPreferredSize(new Dimension(width, height));
         setBackground(Color.BLACK);
-        //initialize the fractal related objects here
         addMouseListener(this);
+        addKeyListener(this);
     }
 
     public void paintComponent(Graphics g) {
@@ -38,7 +39,6 @@ public class FractalPanel extends JPanel implements MouseListener {
             }
         }
     }
-    
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -52,21 +52,82 @@ public class FractalPanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        Complex botRight = view.translate(e.getX(), e.getY());
+        botRight = view.translate(e.getX(), e.getY());
         view.setComplexCorners(topLeft, botRight);
         repaint();
-        Mandelbrot.updateRes();
+        Mandelbrot.iterationLimit *= 1.4;
+        
 
     }
+    
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
+        // unused
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         // unused
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // unused
+      
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyChar() == '='){
+            Mandelbrot.iterationLimit *= 2;
+        }
+        if(e.getKeyChar() == '-'){
+            Mandelbrot.iterationLimit /= 2;
+        }
+        if(e.getKeyChar() == '1'){
+            p = new Palette(0);
+        }
+        if(e.getKeyChar() == '2'){
+            p = new Palette(1);
+        }
+        if(e.getKeyChar() == '3'){
+            p = new Palette(2);
+        }
+        if(e.getKeyChar() == 'd'){
+            botRight = botRight.add(new Complex(ratio,0));
+            topLeft = topLeft.add(new Complex(ratio,0));
+            view.setComplexCorners(topLeft, botRight);
+        }
+        if(e.getKeyChar() == 'a'){
+            botRight = botRight.add(new Complex(-ratio,0));
+            topLeft = topLeft.add(new Complex(-ratio,0));
+            view.setComplexCorners(topLeft, botRight);
+        }
+        if(e.getKeyChar() == 's'){
+            botRight = botRight.add(new Complex(0,-ratio));
+            topLeft = topLeft.add(new Complex(0,-ratio));
+            view.setComplexCorners(topLeft, botRight);
+        }
+        if(e.getKeyChar() == 'w'){
+            botRight = botRight.add(new Complex(0,ratio));
+            topLeft = topLeft.add(new Complex(0,ratio));
+            view.setComplexCorners(topLeft, botRight);
+        }
+        if(e.getKeyChar() == '['){
+           ratio /= 10;
+        }
+        if(e.getKeyChar() == ']'){
+           ratio *= 10;
+        }
+        repaint();
+        
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // unused
+        
     }
 }
 

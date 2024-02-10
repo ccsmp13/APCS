@@ -16,7 +16,5 @@ public class Mandelbrot {
         }
         return k;
     }
-    public static void updateRes(){
-        iterationLimit *= 1.4;
-    }
+    
 }
