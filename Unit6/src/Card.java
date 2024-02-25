@@ -1,6 +1,24 @@
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 public class Card {
     private int rank;
     private int suit;
+    private BufferedImage face;
+    private static BufferedImage back;
+
+    static{
+        String filename = "images/back02.png";
+        try {
+            back = ImageIO.read(new File(filename));
+        } catch (IOException e) {
+            back = null;
+            System.out.println(e + "file: " + filename);
+        }
+    }
     public static final String[] RANKS = {
             null, "Ace", "2", "3", "4", "5", "6", "7",
             "8", "9", "10", "Jack", "Queen", "King" };
@@ -8,9 +26,19 @@ public class Card {
             "Clubs", "Diamonds", "Hearts", "Spades" };
 
     public Card(int rank, int suit) {
+
         this.rank = rank;
         this.suit = suit;
+//TODO figure out how to format the correct filename for a face
+        String filename = "images/card02.png";
+        try {
+            this.face = ImageIO.read(new File(filename));
+        } catch (IOException e) {
+            this.face = null;
+            System.out.println(e + "file: " + filename);
+        }
     }
+
 
     public String toString() {
         String s = RANKS[this.rank] + " of " + SUITS[this.suit];
@@ -45,6 +73,16 @@ public class Card {
     public int getSuit() {
         return this.suit;
     }
+
+    public BufferedImage getFace(){
+        return this.face;
+    }
+
+    public BufferedImage getBack(){
+        return this.back;
+    }
+
+
 
     
 
