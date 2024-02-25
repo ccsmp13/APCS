@@ -16,7 +16,7 @@ public class Card {
             back = ImageIO.read(new File(filename));
         } catch (IOException e) {
             back = null;
-            System.out.println(e + "file: " + filename);
+            System.out.println(e + " file: " + filename);
         }
     }
     public static final String[] RANKS = {
@@ -26,16 +26,17 @@ public class Card {
             "Clubs", "Diamonds", "Hearts", "Spades" };
 
     public Card(int rank, int suit) {
-
+        final int NUM_SUITS = 4;
         this.rank = rank;
         this.suit = suit;
+        int num = (rank - 1) * NUM_SUITS + suit + 1;
 //TODO figure out how to format the correct filename for a face
-        String filename = "images/card02.png";
+        String filename = String.format("images/card%d.png", num);
         try {
             this.face = ImageIO.read(new File(filename));
         } catch (IOException e) {
             this.face = null;
-            System.out.println(e + "file: " + filename);
+            System.out.println(e + " file: " + filename);
         }
     }
 

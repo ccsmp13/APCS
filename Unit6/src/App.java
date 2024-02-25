@@ -1,7 +1,10 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        Gravel gr = new Gravel(3, 4, 5);
-        System.out.println(gr);
-        gr.damage(10);
+        Player p1 = new BlackjackPlayer("Player 1");
+        Player p2 = new BlackjackPlayer("Player 2");
+        p2.take(new Card(11, 2));
+        p1.take(new Card(10, 0));
+
+
     }
 }

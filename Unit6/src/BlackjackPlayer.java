@@ -21,17 +21,9 @@ public class BlackjackPlayer extends Player {
         if (score >= 21) {
             return score;
         }
-        if (numAces > 0) {
-            while (score < 21 && numAces > 0) {
-                score -= 1;
-                if (score + 11  <= 21){
-                    score += 11;
-                    numAces--;
-                } else{
-                    score +=1;
-                    break;
-                }
-            }
+        if (numAces > 0 && score + 10 <= 21) {
+            score += 10;
+
         }
         return score;
 
