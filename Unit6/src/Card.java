@@ -11,7 +11,7 @@ public class Card {
     private static BufferedImage back;
 
     static{
-        String filename = "images/back02.png";
+        String filename = "Unit6/images/back02.png";
         try {
             back = ImageIO.read(new File(filename));
         } catch (IOException e) {
@@ -26,12 +26,15 @@ public class Card {
             "Clubs", "Diamonds", "Hearts", "Spades" };
 
     public Card(int rank, int suit) {
+        if (rank < 1 || rank > 13) {
+        
+        }
         final int NUM_SUITS = 4;
         this.rank = rank;
         this.suit = suit;
         int num = (rank - 1) * NUM_SUITS + suit + 1;
 //TODO figure out how to format the correct filename for a face
-        String filename = String.format("images/card%d.png", num);
+        String filename = String.format("Unit6/images/card%02d.png", num);
         try {
             this.face = ImageIO.read(new File(filename));
         } catch (IOException e) {

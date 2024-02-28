@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
+    
     private List<Card> hand;
     private String name;
 
@@ -18,8 +19,8 @@ public class Player {
     }
 
     public List<Card> fold(){
-        List<Card> foldedHand = hand;
-        hand = new ArrayList<Card>();
+        List<Card> foldedHand = this.hand;
+        this.hand = new ArrayList<Card>();
         return foldedHand;
     }
 

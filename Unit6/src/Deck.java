@@ -32,9 +32,12 @@ public class Deck {
     }
     public void shuffle(){
         for (int i = 0; i < 1000; i++) {
-            Card randCard = deck.remove((int)(Math.random()*52));
+            Card randCard = deck.remove((int)(Math.random() * deck.size()));
             deck.add(randCard);
         }
+    }
+    public void returnToDeck(List<Card> cards){
+        this.deck.addAll(cards);
     }
 }
 
