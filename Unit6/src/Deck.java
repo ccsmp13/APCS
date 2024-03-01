@@ -39,5 +39,8 @@ public class Deck {
     public void returnToDeck(List<Card> cards){
         this.deck.addAll(cards);
     }
+    public void clearDeck(){
+        this.deck.clear();
+    }
 }
 

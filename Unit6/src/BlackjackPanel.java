@@ -1,6 +1,9 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.util.List;
+import java.util.ArrayList;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -22,6 +25,10 @@ public class BlackjackPanel extends JPanel implements KeyListener {
     BufferedImage background;
     int playerScore;
     int dealerScore;
+    List<Card> discardPile;
+    String playerString;
+    String dealerString;
+    String winnerString;
 
     public BlackjackPanel(int width, int height) {
         setPreferredSize(new Dimension(width, height));
@@ -33,6 +40,7 @@ public class BlackjackPanel extends JPanel implements KeyListener {
             background = null;
             System.out.println(e + " file: " + filename);
         }
+        discardPile = new ArrayList<Card>();
         deck = new Deck();
         userInput = 0;
         state = "READY";
@@ -66,6 +74,12 @@ public class BlackjackPanel extends JPanel implements KeyListener {
             g.drawImage(c.getFace(), x, 20, 128, 176, null);
             x += offset;
         }
+        Font font = new Font("Verdana", Font.BOLD, 40);
+        g.setFont(font);
+        g.setColor(Color.WHITE);
+        g.drawString(dealerString, 20, 50);
+        g.drawString(playerString, 20, 550);
+        g.drawString(winnerString, 400, 300);
 
     }
 
@@ -78,6 +92,9 @@ public class BlackjackPanel extends JPanel implements KeyListener {
     }
 
     public void update() {
+        dealerString = "" + dealer.getScore();
+        playerString = "" + p1.getScore();
+        winnerString = "";
         if (state.equals("READY")) {
             // do nothing - wait on user
             if (userInput == ' ') {
@@ -89,6 +106,7 @@ public class BlackjackPanel extends JPanel implements KeyListener {
             p1.take(deck.deal());
             p1.take(deck.deal());
             dealer.take(deck.deal());
+            
             // auto transition
             state = "PLAYER1";
 
@@ -112,24 +130,28 @@ public class BlackjackPanel extends JPanel implements KeyListener {
         } else if (state.equals("SHOW")) {
 
             if (dealer.getScore() == p1.getScore() || (p1.getScore() > 21 && dealer.getScore() > 21)) {
-                System.out.println("Wash");
+                winnerString = "Push";
             } else if (p1.getScore() > 21 || (dealer.getScore() > p1.getScore() && dealer.getScore() <= 21)) {
-                p1.setLosses(p1.getLosses() + 1);
-                System.out.println("Dealer wins");
+                winnerString = "Dealer wins";
             } else if ((dealer.getScore() < p1.getScore() && p1.getScore() <= 21)
                     || dealer.getScore() > 21 && p1.getScore() <= 21) {
-                p1.setWins(p1.getWins() + 1);
-                System.out.println("Player wins");
+                winnerString = "Player wins";
             } else {
                 throw new RuntimeException("Unable to score");
             }
-            state = "DISCARD";
+            if (userInput == 'r') {
+                state = "DISCARD";
+                userInput = 0;
+            }
         } else if (state.equals("DISCARD")) {
-            deck.returnToDeck(p1.fold());
-            deck.returnToDeck(dealer.fold());
+            discardPile.addAll(p1.fold());
+            discardPile.addAll(dealer.fold());
+            if(discardPile.size() > 15){
+                deck.returnToDeck(discardPile);
+                deck.shuffle();
+            }
+            
             state = "READY";
-            System.out.println("Player 1 wins: " + p1.getWins());
-            System.out.println("Player 1 losses: " + p1.getLosses());
 
         } else {
             throw new RuntimeException("Undefined state: " + state);
