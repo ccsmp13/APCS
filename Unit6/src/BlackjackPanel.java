@@ -34,7 +34,7 @@ public class BlackjackPanel extends JPanel {
     }
 
     public void run() {
-        while (roundCount <= 10000) {
+        while (roundCount <= 100000) {
             update();
         }
         System.exit(0);
