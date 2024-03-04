@@ -32,15 +32,14 @@ public class Card {
         final int NUM_SUITS = 4;
         this.rank = rank;
         this.suit = suit;
-        int num = (rank - 1) * NUM_SUITS + suit + 1;
-//TODO figure out how to format the correct filename for a face
-        String filename = String.format("Unit6/images/card%02d.png", num);
-        try {
-            this.face = ImageIO.read(new File(filename));
-        } catch (IOException e) {
-            this.face = null;
-            System.out.println(e + " file: " + filename);
-        }
+       // int num = (rank - 1) * NUM_SUITS + suit + 1;
+        //String filename = String.format("Unit6/images/card%02d.png", num);
+        //try {
+        //    this.face = ImageIO.read(new File(filename));
+        //} catch (IOException e) {
+        //    this.face = null;
+        //    System.out.println(e + " file: " + filename);
+       // }
     }
 
 

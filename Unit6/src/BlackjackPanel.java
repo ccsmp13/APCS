@@ -1,19 +1,10 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
 import java.util.List;
 import java.util.ArrayList;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
+import javax.management.RuntimeErrorException;
 import javax.swing.JPanel;
 
-public class BlackjackPanel extends JPanel implements KeyListener {
+public class BlackjackPanel extends JPanel {
 
     BlackjackPlayer p1;
     BlackjackPlayer dealer;
@@ -22,161 +13,119 @@ public class BlackjackPanel extends JPanel implements KeyListener {
     String state;
     final int LEFT_OF_ORGIN = 100;
     int fps = 10;
-    BufferedImage background;
     int playerScore;
     int dealerScore;
     List<Card> discardPile;
     String playerString;
     String dealerString;
     String winnerString;
+    int roundCount;
 
     public BlackjackPanel(int width, int height) {
-        setPreferredSize(new Dimension(width, height));
-        setBackground(new Color(18, 130, 70));
-        String filename = "Unit6/images/background.jpg";
-        try {
-            background = ImageIO.read(new File(filename));
-        } catch (IOException e) {
-            background = null;
-            System.out.println(e + " file: " + filename);
-        }
+        roundCount = 0;
         discardPile = new ArrayList<Card>();
         deck = new Deck();
+        deck.shuffle();
         userInput = 0;
         state = "READY";
         p1 = new BlackjackPlayer("Player 1");
         dealer = new BlackjackPlayer("Dealer");
-        
-
-        // TODO remove these test lines after testing
-       
-
-        addKeyListener(this);
-
-        // add KeyListener / MouseListener here
-    }
-
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        // draw background BufferedImage here
-        // draw foreground objects here
-        // TODO display all cards in the hands neatly on the panel
-        // g.drawImage(imageObject, x, y, w, h, null);
-        int x = LEFT_OF_ORGIN;
-        int offset = 130;
-        g.drawImage(background, 0, 0, null);
-        for (Card c : p1.getHand()) {
-            g.drawImage(c.getFace(), x, 400, 128, 176, null);
-            x += offset;
-        }
-        x = LEFT_OF_ORGIN;
-        for (Card c : dealer.getHand()) {
-            g.drawImage(c.getFace(), x, 20, 128, 176, null);
-            x += offset;
-        }
-        Font font = new Font("Verdana", Font.BOLD, 40);
-        g.setFont(font);
-        g.setColor(Color.WHITE);
-        g.drawString(dealerString, 20, 50);
-        g.drawString(playerString, 20, 550);
-        g.drawString(winnerString, 400, 300);
 
     }
 
     public void run() {
-        while (true) {
-            update(); // implement state machine in update
-            repaint();
-            delay(1000 / fps);
+        while (roundCount <= 10000) {
+            update();
         }
+        System.exit(0);
     }
 
     public void update() {
-        dealerString = "" + dealer.getScore();
-        playerString = "" + p1.getScore();
-        winnerString = "";
-        if (state.equals("READY")) {
-            // do nothing - wait on user
-            if (userInput == ' ') {
-                deck.shuffle();
+        
+
+            final int ADD_TO_DECK = 30;
+            final int DEALER_LIMIT = 17;
+            final int TARGET_SCORE = 21;
+            if (state.equals("READY")) {
+
                 state = "DEALING";
-                userInput = 0;
-            }
-        } else if (state.equals("DEALING")) {
-            p1.take(deck.deal());
-            p1.take(deck.deal());
-            dealer.take(deck.deal());
-            
-            // auto transition
-            state = "PLAYER1";
 
-        } else if (state.equals("PLAYER1")) {
-            if (userInput == 's') {
-                state = "DEALERSTURN";
-                userInput = 0;
-            }
-            if (userInput == 'h') {
+            } else if (state.equals("DEALING")) {
                 p1.take(deck.deal());
-                userInput = 0;
-            }
-            if (p1.getScore() > 21) {
-                state = "SHOW";
-            }
-        } else if (state.equals("DEALERSTURN")) {
-            while (dealer.getScore() <= 17) {
+                p1.take(deck.deal());
                 dealer.take(deck.deal());
-            }
-            state = "SHOW";
-        } else if (state.equals("SHOW")) {
 
-            if (dealer.getScore() == p1.getScore() || (p1.getScore() > 21 && dealer.getScore() > 21)) {
-                winnerString = "Push";
-            } else if (p1.getScore() > 21 || (dealer.getScore() > p1.getScore() && dealer.getScore() <= 21)) {
-                winnerString = "Dealer wins";
-            } else if ((dealer.getScore() < p1.getScore() && p1.getScore() <= 21)
-                    || dealer.getScore() > 21 && p1.getScore() <= 21) {
-                winnerString = "Player wins";
-            } else {
-                throw new RuntimeException("Unable to score");
-            }
-            if (userInput == 'r') {
+                // auto transition
+                state = "PLAYER1";
+
+            } else if (state.equals("PLAYER1")) {
+                int dealerScore = dealer.getScore();
+
+                if (p1.getScore() < 12) {
+                    p1.take(deck.deal());
+                } else if (p1.getScore() > 11 && dealerScore > 6 && p1.getScore() < 17){
+                    p1.take(deck.deal());
+                } else if (p1.getScore() == 12 && dealerScore < 4){
+                    p1.take(deck.deal());
+                } else if (p1.getScore() > 16){
+                    state = "DEALERSTURN";
+                } else if (p1.getScore() > 12 && p1.getScore() < 17 && dealerScore < 7){
+                    state = "DEALERSTURN";
+                } else if (p1.getScore() == 12 && (dealerScore == 4 || dealerScore == 5 || dealerScore == 6)){
+                    state = "DEALERSTURN";
+                }
+                if (p1.getScore() > TARGET_SCORE) {
+                    state = "SHOW";
+                }
+
+            } else if (state.equals("DEALERSTURN")) {
+                while (dealer.getScore() < DEALER_LIMIT) {
+                    dealer.take(deck.deal());
+                }
+                state = "SHOW";
+            } else if (state.equals("SHOW")) {
+
+                playerScore = p1.getScore();
+                dealerScore = dealer.getScore();
+
+                if (playerScore > TARGET_SCORE || dealerScore <= TARGET_SCORE && dealerScore > playerScore) {
+                    p1.lose();
+                } else if (dealerScore > TARGET_SCORE) {
+                    p1.win();
+                } else if ( playerScore > dealerScore){
+                    if(p1.getHand().size() == 2 && p1.getScore() == 21){
+                        //p1.bigWin();
+                        //for 150% win black jack
+                        p1.win();
+                    } else {
+                    p1.win();
+                }
+                } else if (playerScore == dealerScore) {
+
+                } else {
+                    throw new RuntimeException("Unable to score");
+                }
                 state = "DISCARD";
-                userInput = 0;
-            }
-        } else if (state.equals("DISCARD")) {
-            discardPile.addAll(p1.fold());
-            discardPile.addAll(dealer.fold());
-            if(discardPile.size() > 15){
-                deck.returnToDeck(discardPile);
-                deck.shuffle();
+                
+            } else if (state.equals("DISCARD")) {
+                discardPile.addAll(p1.fold());
+                discardPile.addAll(dealer.fold());
+                if (discardPile.size() > ADD_TO_DECK) {
+                    deck.returnToDeck(discardPile);
+                    deck.shuffle();
+                    discardPile.clear();
+                }
+
+                state = "READY";
+                roundCount++;
+                if (roundCount % 1000 == 0 || (roundCount % 5 == 0 && roundCount <= 10000)) {
+                    double edge = (p1.getWins() - p1.getLosses()) / (double) roundCount;
+                    System.out.println(edge);
+                }
+                
+            } else {
+                throw new RuntimeException("Undefined state: " + state);
             }
             
-            state = "READY";
-
-        } else {
-            throw new RuntimeException("Undefined state: " + state);
-        }
-    }
-
-    public void delay(int n) {
-        try {
-            Thread.sleep(n);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        userInput = e.getKeyChar();
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
     }
 }

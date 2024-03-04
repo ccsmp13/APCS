@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Random;
 import java.util.ArrayList;
 
 public class Deck {
@@ -30,12 +31,27 @@ public class Deck {
         }
         return result;
     }
-    public void shuffle(){
-        for (int i = 0; i < 1000; i++) {
-            Card randCard = deck.remove((int)(Math.random() * deck.size()));
-            deck.add(randCard);
-        }
+    public void shuffle() {
+    Random rand = new Random();
+    int n = deck.size();
+    
+    for (int i = n - 1; i > 0; i--) {
+        // Generate a random index j such that 0 <= j <= i
+        int j = rand.nextInt(i + 1);
+        
+        // Swap the elements at indices i and j
+        Card temp = deck.get(i);
+        deck.set(i, deck.get(j));
+        deck.set(j, temp);
     }
+}
+    
+    // public void shuffle() {
+    //     for (int i = 0; i < 1000; i++) {
+    //         Card randCard = deck.remove((int) (Math.random() * deck.size()));
+    //         deck.add(randCard);
+    //     }
+    // }
     public void returnToDeck(List<Card> cards){
         this.deck.addAll(cards);
     }

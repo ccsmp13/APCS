@@ -1,7 +1,7 @@
 public class BlackjackPlayer extends Player {
 
-    private int wins;
-    private int losses;
+    private double wins;
+    private double losses;
 
     public BlackjackPlayer(String name) {
         super(name);
@@ -31,6 +31,16 @@ public class BlackjackPlayer extends Player {
         return score;
 
     }
+    public void win(){
+        this.wins += 1;
+    }
+    public void bigWin(){
+        this.wins += 1.5;
+    }
+
+    public void lose(){
+        this.losses += 1;
+    }
 
     public void setWins(int wins) {
         this.wins = wins;
@@ -40,11 +50,11 @@ public class BlackjackPlayer extends Player {
         this.losses = losses;
     }
 
-    public int getWins() {
+    public double getWins() {
         return wins;
     }
 
-    public int getLosses() {
+    public double getLosses() {
         return losses;
     }
     
