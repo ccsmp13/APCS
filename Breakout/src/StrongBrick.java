@@ -46,7 +46,8 @@ public class StrongBrick extends Brick {
     }
     @Override
     public void paint(Graphics g){
-        g.setColor(this.color); 
+        g.setColor(this.color);
+        
 		g.fill3DRect((int) this.xPos + 1, (int) this.yPos + 1, this.width - 2, this.height - 2, true);
         if(this.strength == 2){
             g.drawImage(stage1Image,(int) this.xPos + 1, (int) this.yPos + 1,null);

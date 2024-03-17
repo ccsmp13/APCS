@@ -1,14 +1,21 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 public class Score implements Animatable{
 
-	public Score() {
-		// TODO Auto-generated constructor stub
+	int x, y;
+
+	public Score(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 
 	@Override
 	public void paint(Graphics g) {
-		// TODO Auto-generated method stub
+		g.setFont(new Font("Arial", Font.PLAIN, 24));
+		g.setColor(Color.WHITE);
+		g.drawString("Score:       Lives:      ", this.x, this.y);
 		
 	}
 

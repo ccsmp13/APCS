@@ -21,21 +21,14 @@ public class Ball extends GameObject {
 		this.color = Color.red;
 		this.xVel = 4;
 		this.yVel = 6;
-		String filename = "Breakout/baseball.gif";
-        try {
-            this.ball = ImageIO.read(new File(filename));
-        } catch (IOException e) {
-            this.ball = null;
-            System.out.println(e + " file: " + filename);
-        }
+		this.color = Color.WHITE;
 		
 	}
 
 	@Override
 	public void paint(Graphics g) {
-		//g.setColor(this.color);
-		//g.fillOval((int)this.xPos - this.radius, (int)this.yPos - this.radius, 2*this.radius, 2*this.radius);
-		g.drawImage(ball,(int)this.xPos - this.radius, (int)this.yPos - this.radius, 2*this.radius, 2*this.radius,null);
+		g.setColor(this.color);
+		g.fillOval((int)this.xPos - this.radius, (int)this.yPos - this.radius, 2*this.radius, 2*this.radius);
 	}
 
 	@Override 

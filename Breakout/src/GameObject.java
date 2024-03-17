@@ -1,6 +1,6 @@
 import java.awt.Graphics;
 
-public abstract class GameObject{
+public abstract class GameObject implements Animatable{
 	
 	protected double xPos, yPos;
 	protected int width, height;				
@@ -15,5 +15,22 @@ public abstract class GameObject{
 	public abstract void paint(Graphics g);
 	
 	public abstract void update();
+
+	public double getxPos() {
+		return xPos;
+	}
+
+	public double getyPos() {
+		return yPos;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+	
 	
 }
