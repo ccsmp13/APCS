@@ -1,6 +1,6 @@
 public class MagicSquare {
     public static void main(String[] args) {
-        int[][] a = buildMagicSquare(31);
+        int[][] a = buildMagicSquare(15);
         printMagicSquare(a);
         sumMagicSquare(a);
         

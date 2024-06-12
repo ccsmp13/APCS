@@ -23,11 +23,6 @@ private double xVel;
         
 
     }
-    @Override
-	public void paint(Graphics g) {
-		g.setColor(this.color);
-		g.fillRoundRect((int)this.xPos, (int)this.yPos, this.width, this.height, this.height/2, this.height/2);
-	}
 		
 	@Override
 	public void update() {
@@ -44,15 +39,6 @@ private double xVel;
         timer--;
 	}
 	
-	public void changeDir(int d) {
-		if(d > 0) {
-			this.xVel = MAX_VEL;
-		}else if( d < 0) {
-			this.xVel = -MAX_VEL;
-		}else {
-			this.xVel = 0;
-		}
-	}
     public void setTimer(int timer) {
         this.timer = timer;
     }

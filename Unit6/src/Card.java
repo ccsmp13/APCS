@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Card {
+public class Card implements Comparable<Card>{
     private int rank;
     private int suit;
     private BufferedImage face;
@@ -53,21 +53,25 @@ public class Card {
                 && this.suit == that.suit;
     }
 
-    public int compareTo(Card that) {
-        if (this.suit < that.suit) {
-            return -1;
-        }
-        if (this.suit > that.suit) {
-            return 1;
-        }
-        if (this.rank < that.rank) {
-            return -1;
-        }
-        if (this.rank > that.rank) {
-            return 1;
-        }
-        return 0;
-    }
+    // public int compareTo(Card that) {
+    //     if (this.suit < that.suit) {
+    //         return -1;
+    //     }
+    //     if (this.suit > that.suit) {
+    //         return 1;
+    //     }
+    //     if (this.rank < that.rank) {
+    //         return -1;
+    //     }
+    //     if (this.rank > that.rank) {
+    //         return 1;
+    //     }{
+
+
+            
+    //     }
+    //     return 0;
+    // }
 
     public int getRank() {
         return this.rank;
@@ -75,6 +79,11 @@ public class Card {
 
     public int getSuit() {
         return this.suit;
+    }
+    public int compareTo(Card other){
+        int thisNum = this.rank * 4 + this.suit;
+        int othernum = other.rank * 4 + other.suit;
+        return thisNum - othernum;
     }
 
     public BufferedImage getFace(){
@@ -84,6 +93,12 @@ public class Card {
     public BufferedImage getBack(){
         return this.back;
     }
+
+
+    
+
+
+    
 
 
 

@@ -1,0 +1,203 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "ABSArrays",
+            "request": "launch",
+            "mainClass": "ABSArrays",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "ArrayDemo",
+            "request": "launch",
+            "mainClass": "ArrayDemo",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "ArrayMethods",
+            "request": "launch",
+            "mainClass": "ArrayMethods",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "BirthdayParadox",
+            "request": "launch",
+            "mainClass": "BirthdayParadox",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "BlackjackPlayerUnitTest",
+            "request": "launch",
+            "mainClass": "BlackjackPlayerUnitTest",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "BlackjackRunner",
+            "request": "launch",
+            "mainClass": "BlackjackRunner",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "CardsClient",
+            "request": "launch",
+            "mainClass": "CardsClient",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "ColorVisRunner",
+            "request": "launch",
+            "mainClass": "ColorVisRunner",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "ConwayRunner",
+            "request": "launch",
+            "mainClass": "ConwayRunner",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "FractalRunner",
+            "request": "launch",
+            "mainClass": "FractalRunner",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "LanguageAnalyzer",
+            "request": "launch",
+            "mainClass": "LanguageAnalyzer",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "ListPractice",
+            "request": "launch",
+            "mainClass": "ListPractice",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "LiztUnitTest",
+            "request": "launch",
+            "mainClass": "LiztUnitTest",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "MagicSquare",
+            "request": "launch",
+            "mainClass": "MagicSquare",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "MandelbrotUnitTest",
+            "request": "launch",
+            "mainClass": "MandelbrotUnitTest",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "SearchTest",
+            "request": "launch",
+            "mainClass": "SearchTest",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "SearchUnitTest",
+            "request": "launch",
+            "mainClass": "SearchUnitTest",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "SevenSevenSixSixSevenEight",
+            "request": "launch",
+            "mainClass": "SevenSevenSixSixSevenEight",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "SortTest",
+            "request": "launch",
+            "mainClass": "SortTest",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "TicTacToe",
+            "request": "launch",
+            "mainClass": "TicTacToe",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "TwoDArray",
+            "request": "launch",
+            "mainClass": "TwoDArray",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "TwoDArrayPrac",
+            "request": "launch",
+            "mainClass": "TwoDArrayPrac",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "TwoDArraysOne",
+            "request": "launch",
+            "mainClass": "TwoDArraysOne",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "ViewUnitTest",
+            "request": "launch",
+            "mainClass": "ViewUnitTest",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "testCards",
+            "request": "launch",
+            "mainClass": "testCards",
+            "projectName": "APCS_67e02692"
+        },
+        {
+            "type": "java",
+            "name": "BreakoutRunner",
+            "request": "launch",
+            "mainClass": "BreakoutRunner",
+            "projectName": "Breakout"
+        }
+    ]
+}
